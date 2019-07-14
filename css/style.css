@@ -1,0 +1,52 @@
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+h1,p,h2, h3,h4,h5,h6{
+    font-family: 'Poppins', sans-serif;
+}
+
+.center-title{
+    text-align: center;
+}
+
+.content-frame{
+    margin-top: 40px;
+}
+.animal-protection{
+    height: 400px;
+    width: 100%;
+}
+.slider-label{
+    left: 25%;
+    right: 25%;
+    top: 20%;
+    text-align: center;
+    margin: 0 auto;
+    position: absolute;
+}
+
+
+.slider-bg-dark{
+    left: 25%;
+    right: 25%;
+    top: 20%;
+    text-align: center;
+    margin: 0 auto;
+    position: absolute;
+}
+
+.slider-bg-dark-label{
+    padding: 20px;
+    font-size: 18px;
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: white;
+}
+#overflowTest {
+    color: white;
+    padding: 15px;
+    height: 100px;
+    overflow: scroll;
+    border: 1px solid #ccc;
+  }
