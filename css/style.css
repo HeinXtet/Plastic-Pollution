@@ -26,7 +26,6 @@ h1,p,h2, h3,h4,h5,h6{
     position: absolute;
 }
 
-
 .slider-bg-dark{
     left: 25%;
     right: 25%;
@@ -49,4 +48,12 @@ h1,p,h2, h3,h4,h5,h6{
     height: 100px;
     overflow: scroll;
     border: 1px solid #ccc;
+  }
+
+.pig-bg{
+    z-index: 1;
+    position: absolute;
+    height: 100px;;
+    width: 100%;
+    background: pink;
   }

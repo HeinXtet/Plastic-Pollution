@@ -33,38 +33,71 @@ session_start();
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalCenterTitle">Sign Up Now</h5>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">SignUp</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">SignIn</a>
+                </li>
+              </ul>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <form method="POST" action="../../../plastic/db/registration.php">
-            <div class="form-group">
-              <label for="firstName">First Name</label>
-              <input type="text" name="firstName" class="form-control" id="firstName" placeholder="Enter FastName">
-            </div>
-            <div class="form-group">
-              <label for="lastName">Last Name</label>
-              <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Enter LastName">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Enter email">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <div class="form-group">
-              <label for="confrimPass">Confirm Password</label>
-              <input name="confirmPassword" type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
-            </div>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+            
+              <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                      <form method="POST" action="../../../plastic/db/registration.php">
+                        <div class="form-group">
+                          <label for="firstName">First Name</label>
+                          <input type="text" name="firstName" class="form-control" id="firstName" placeholder="Enter FastName">
+                        </div>
+                        <div class="form-group">
+                          <label for="lastName">Last Name</label>
+                          <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Enter LastName">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Email address</label>
+                          <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Enter email">
+                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Password</label>
+                          <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                          <label for="confrimPass">Confirm Password</label>
+                          <input name="confirmPassword" type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                        </div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                      </form>
+                
+                  </div>
+                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                      <form method="POST" action="../../../plastic/db/registration.php">
+                        <div class="form-group">
+                          <input type="hidden" name="login"/> 
+                          <label for="exampleInputEmail1">Email address</label>
+                          <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Enter email">
+                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Password</label>
+                          <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Sign In</button>
+                      </form>
+                  </div>
+                </div>
+          
+      
         </div>
       </div>
     </div>

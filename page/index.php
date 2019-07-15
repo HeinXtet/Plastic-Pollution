@@ -1,7 +1,38 @@
 <!DOCTYPE html>
 <?php
     include_once("../page/commom/navbar.php");
-?>
+    if(isset($_SESSION['attampts'])){
+      if($_SESSION['attampts'] >= 0) { echo "Over three time"?>
+      <script>
+// Set the date we're counting down to
+var d1 = new Date (),
+countDownDate = new Date ( d1 );
+    countDownDate.setMinutes ( d1.getMinutes() + 30 );
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  // Output the result in an element with id="demo"
+  document.getElementById("count").innerHTML = minutes + "m " + seconds + "s ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("c").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+     <?php }} ?>
+
 <html lang="en">
 
 <head>
@@ -28,6 +59,16 @@
 </head>
 
 <body>
+<?php 
+
+      if(isset($_SESSION['error'])){ ?>
+<div style="margin:30px;" class="alert alert-danger" role="alert">
+          <?php echo $_SESSION['error']; ?>
+        </div>
+     <?php }
+?>
+<p id="count"></p>
+<form action="index.php" name="form1" id="form1">
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -46,20 +87,23 @@
       </div>
       <div class="carousel-item">
         <div class="slider-bg-dark">
-          <h4 class="slider-bg-dark-label">
-            For A Better Planet. For A Better You.
-            Serving our oceans and the public to end plastic pollution.
-          </h4>
+          <h3 style="color: aqua;font-size: 30px" class="slider-bg-dark-label">
+            For A Better Planet. For A Better You.<br>
+            <span style="color: white;font-size: 15px">Serving our oceans and the public to end plastic pollution.</span>
+          </h3>
         </div>
         <img src="../image/reduce-plastic.jpg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-          <div style="position: absolute">
-            <h4 style="color: white;font-size: 40px;margin-top: 20%;margin-left: 20px;">
-                IT’S NOT JUST ABOUT US.
+          <div style="position: absolute;height: 100%;width: 100%;background-color: rgba(0, 0, 0, 0.2)">
+            <h4 style="color: white;font-size: 40px;margin-left: 20px;font-weight: 300 ;margin-top: 10%;">
+                IT’S <span style="color: aqua">NOT</span> JUST ABOUT <span style="color: aqua">US</span><br>
             </h4>
+            <p style="padding-left: 20px; font-size: 20px;color: white">
+              Humans created the problem, but it impacts all living creatures and the entire planet.
+            </p>
           </div>
-          <img src="../image/pig.jpeg" class="d-block w-100" alt="...">
+          <img style="background-color: blue"  src="../image/pig.jpeg" class="d-block w-100" alt="...">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -71,9 +115,10 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-  
-
   <div class="container">
+
+
+
     <div class="content-frame">
         <p>
         Plastic pollution is the accumulation of plastic objects (e.g.: plastic bottles and much more) in the Earth's
@@ -100,5 +145,7 @@
     data-close-text="Got it!">
     </script>
 </body>
-
 </html>
+<?php
+   unset($_SESSION['error']);
+?>
