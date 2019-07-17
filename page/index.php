@@ -59,8 +59,8 @@ var x = setInterval(function() {
 </head>
 
 <body>
+<div class="countdown"></div>
 <?php 
-
       if(isset($_SESSION['error'])){ ?>
 <div style="margin:30px;" class="alert alert-danger" role="alert">
           <?php echo $_SESSION['error']; ?>
@@ -116,9 +116,6 @@ var x = setInterval(function() {
     </a>
   </div>
   <div class="container">
-
-
-
     <div class="content-frame">
         <p>
         Plastic pollution is the accumulation of plastic objects (e.g.: plastic bottles and much more) in the Earth's
@@ -144,6 +141,40 @@ var x = setInterval(function() {
      data-text-align="left"
     data-close-text="Got it!">
     </script>
+<script>
+  <?php if(isset($_SESSION['attampts'])){
+      if($_SESSION['attampts'] >= 3) {?>
+        $(document).ready(function() {
+        var timer2 = localStorage.getItem('timer');
+        if(timer2 === null) timer2 = "1:00";
+        $('.countdown').html(timer2);
+        var interval = setInterval(function() {
+            var timer = timer2.split(':');
+            var minutes = parseInt(timer[0], 10);
+            var seconds = parseInt(timer[1], 10);
+            --seconds;
+            minutes = (seconds < 0) ? --minutes : minutes;
+            if (minutes < 0){
+                clearInterval(interval);
+                localStorage.removeItem('timer');
+                $('button').show();
+                $('.countdown').html("finish");
+                <?php 
+                  unset($_SESSION['attampts']);
+                ?>
+            }else{
+                seconds = (seconds < 0) ? 59 : seconds;
+                seconds = (seconds < 10) ? '0' + seconds : seconds;
+                $('.countdown').html(minutes + ':' + seconds);
+                timer2 = minutes + ':' + seconds;
+                localStorage.setItem('timer',timer2);
+            }
+        }, 1000);
+    });
+      <?php } ?>
+ <?php }
+?>    
+</script>
 </body>
 </html>
 <?php
