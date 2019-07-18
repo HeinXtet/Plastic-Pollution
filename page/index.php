@@ -1,40 +1,12 @@
 <!DOCTYPE html>
 <?php
     include_once("../page/commom/navbar.php");
-    if(isset($_SESSION['attampts'])){
-      if($_SESSION['attampts'] >= 0) { echo "Over three time"?>
-      <script>
-// Set the date we're counting down to
-var d1 = new Date (),
-countDownDate = new Date ( d1 );
-    countDownDate.setMinutes ( d1.getMinutes() + 30 );
-// Update the count down every 1 second
-var x = setInterval(function() {
-
-  // Get today's date and time
-  var now = new Date().getTime();
-    
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  // Output the result in an element with id="demo"
-  document.getElementById("count").innerHTML = minutes + "m " + seconds + "s ";
-    
-  // If the count down is over, write some text 
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("c").innerHTML = "EXPIRED";
+    if(!isset($_SESSION['attampts'])){
+      $_SESSION['attampts'] = 0;
   }
-}, 1000);
-</script>
-     <?php }} ?>
-
+  print_r($_SESSION);
+    ?>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,17 +29,28 @@ var x = setInterval(function() {
   <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css" />
 </head>
-
 <body>
-<div class="countdown"></div>
 <?php 
-      if(isset($_SESSION['error'])){ ?>
-<div style="margin:30px;" class="alert alert-danger" role="alert">
+     if(isset($_SESSION['error'])){ ?>
+      <?php 
+          if($_SESSION['attampts'] >=1) {?>
+            <div style="margin:30px;" id="error-alert" class="alert alert-danger" role="alert">
+          <?php  echo $_SESSION['error'];?> <p class="countdown"></p>
+        </div>
+          <?php }else{ ?>
+            <div style="margin:30px;" id="error-alert" class="alert alert-danger" role="alert">
           <?php echo $_SESSION['error']; ?>
         </div>
+          <?php } ?>
      <?php }
 ?>
-<p id="count"></p>
+<p class="countdown">Count</p>
+          <?php if(isset($_SESSION['test'])) { ?> 
+            <p> <?php echo $_SESSION['test']?></p>
+            <?php } ?>
+
+
+
 <form action="index.php" name="form1" id="form1">
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -141,12 +124,14 @@ var x = setInterval(function() {
      data-text-align="left"
     data-close-text="Got it!">
     </script>
-<script>
-  <?php if(isset($_SESSION['attampts'])){
-      if($_SESSION['attampts'] >= 3) {?>
+  
+  <?php 
+      if($_SESSION['attampts'] >= 1){
+                                      ?>
+  <script>
         $(document).ready(function() {
         var timer2 = localStorage.getItem('timer');
-        if(timer2 === null) timer2 = "1:00";
+        if(timer2 === null) timer2 = "0:10";
         $('.countdown').html(timer2);
         var interval = setInterval(function() {
             var timer = timer2.split(':');
@@ -155,13 +140,17 @@ var x = setInterval(function() {
             --seconds;
             minutes = (seconds < 0) ? --minutes : minutes;
             if (minutes < 0){
+               
+                <?php echo "alert('message ');";
+                 $_SESSION[
+                  'test'
+                ] = 'teste32';
+                  ($_SESSION['attampts'] = 0);
+                ?>
                 clearInterval(interval);
                 localStorage.removeItem('timer');
-                $('button').show();
                 $('.countdown').html("finish");
-                <?php 
-                  unset($_SESSION['attampts']);
-                ?>
+                $('#error-alert').hide();
             }else{
                 seconds = (seconds < 0) ? 59 : seconds;
                 seconds = (seconds < 10) ? '0' + seconds : seconds;
@@ -171,12 +160,13 @@ var x = setInterval(function() {
             }
         }, 1000);
     });
+  
+    </script>
       <?php } ?>
- <?php }
-?>    
-</script>
 </body>
 </html>
-<?php
-   unset($_SESSION['error']);
-?>
+<!-- <?php
+  // if($_SESSION['attampts'] < 3){
+  //   unset($_SESSION['error']);
+  // }
+?> -->

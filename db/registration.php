@@ -33,15 +33,8 @@ if (!isset($_POST['login'])){
     }
 }else{
     
-    echo "login";
     $email = $_POST['email'];
     $password = $_POST['password'];
-
-    if(!isset($_SESSION['attempts'])){
-        echo "first step";
-        $_SESSION['attampts'] = 0;
-    }
-
     if($_SESSION['attampts'] < 3){
         $encryptedPassword = sha1($password);
         $selectQuery = "SELECT * FROM user WHERE email = '$email' and password = '$encryptedPassword' ";
@@ -55,18 +48,17 @@ if (!isset($_POST['login'])){
             $attamptCount  = $_SESSION['attampts'];
             $attamptCount = $attamptCount + 1; 
             $_SESSION['attampts'] = $attamptCount;
-            $_SESSION['error'] = "UnAuthorized User, Please try again. Attampt Count".$_SESSION['attampts'] ;
+            $_SESSION['error'] = "UnAuthorized User, Please try again. Login Error Count ".$_SESSION['attampts'] ;
             header("location:../page/index.php");
         }
     }else{
-        $_SESSION['error'] = "You've failed too many times, dude.You can try again after 3 minutes.";
-        header("location:../page/index.php");
+        $_SESSION['error'] = "You've failed too many times, dude.You can try again after 3 minutes. ".$_SESSION['attampts'];
+        header('location:../page/index.php');
     }
 }
 $conn->close();
 class Querying
 {
-
     public function userTransaction($email, $conn)
     {
         $sql = "SELECT * FROM user WHERE email = '$email' ";
