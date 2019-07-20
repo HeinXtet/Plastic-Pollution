@@ -24,6 +24,7 @@ session_start();
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../css/register.css" />
+  <link rel="stylesheet" href="../style.css"/>
   <link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One&display=swap" rel="stylesheet">
 </head>
 
@@ -102,32 +103,32 @@ session_start();
       </div>
     </div>
   </div>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <div style="background:black">
+  <nav class="navbar navbar-expand-lg navbar-1">
     <a class="navbar-brand" href="#" style="color: green">Plastic Pollution</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    aria-controls="navbarSupportedContent15" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="../page/index.php">Home <span class="sr-only">(current)</span></a>
+          <a id="nav-item-ul"  class="nav-link" href="../page/index.php">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../page/about.php">About</a>
+          <a id="nav-item-ul"  class="nav-link" href="../page/about.php">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../page/contact.php">Contact Us</a>
+          <a id="nav-item-ul"  class="nav-link" href="../page/contact.php">Contact Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../page/strategy.php">Strategy</a>
+          <a id="nav-item-ul"  class="nav-link" href="../page/strategy.php">Strategy</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../page/campagins.php">Campagins</a>
+          <a id="nav-item-ul"  class="nav-link" href="../page/campagins.php">Campagins</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../page/help.php">Help</a>
+          <a id="nav-item-ul"  class="nav-link" href="../page/help.php">Help</a>
         </li>
       </ul>
         <?php
@@ -147,6 +148,7 @@ session_start();
         <?php }?>
     </div>
   </nav>
+        </div>
   <style>
     .navbar-default .navbar-nav>.active>a,
     .navbar-default .navbar-nav>.active>a:hover,

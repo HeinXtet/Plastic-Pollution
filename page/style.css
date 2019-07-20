@@ -1,0 +1,216 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+h1, p, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+}
+
+.center-title {
+    text-align: center;
+}
+
+.mission {
+    text-align: center;
+}
+
+.mission h2 {
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 10%;
+}
+
+.mission p {
+    color: gray;
+    font-weight: normal;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 5%;
+    padding: 20px;
+}
+
+.test {
+    color: green;
+}
+
+.content-frame {
+    margin-top: 40px;
+}
+
+.animal-protection {
+    height: 600px;
+    width: 100%;
+}
+
+.slider-label {
+    left: 25%;
+    right: 25%;
+    top: 20%;
+    text-align: center;
+    margin: 0 auto;
+    position: absolute;
+}
+
+.slider-bg-dark {
+    left: 25%;
+    right: 25%;
+    top: 20%;
+    text-align: center;
+    margin: 0 auto;
+    position: absolute;
+}
+
+.slider-bg-dark-label {
+    padding: 20px;
+    font-size: 18px;
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: white;
+}
+
+#overflowTest {
+    color: white;
+    padding: 15px;
+    height: 100px;
+    overflow: scroll;
+    border: 1px solid #ccc;
+}
+
+.pig-bg {
+    z-index: 1;
+    position: absolute;
+    height: 100px;
+    width: 100%;
+    background: pink;
+}
+
+.info-text {
+    max-width: 800px;
+    margin: 0 auto;
+    letter-spacing: 3px;
+}
+
+.full-dark-frame {
+    height: 550px;
+    width: 100%;
+    position: relative;
+}
+
+#overlay-dark {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero {
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    height: 80vh;
+    z-index: -10;
+    ;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+    top: 0;
+    bottom: 0;
+}
+
+.info-text h1 {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    padding-top: 20%
+}
+
+.info-text p {
+    color: white;
+    font-style: italic;
+    font-weight: lighter;
+    text-align: center
+}
+
+#facebook, #twitter :hover {
+    fill: #4691f6;
+}
+
+#facebook :hover {
+    fill: #4691f6;
+}
+
+#youtube :hover {
+    fill: red;
+}
+
+#instagram :hover {
+    fill: burlywood;
+}
+
+.svg-icon {
+    width: 3em;
+    height: 3em;
+}
+
+.svg-icon path, .svg-icon polygon, .svg-icon rect {
+    fill: gray;
+}
+
+.svg-icon circle {
+    stroke: #4691f6;
+    stroke-width: 1;
+}
+
+#nav-item-ul {
+    color: grey;
+}
+
+.icon-bar {
+    background-color: #FF0000 !important;
+}
+
+.navbar-toggler.toggler-example {
+    cursor: pointer;
+}
+
+.fa-1x {
+    font-size: 1.5rem;
+}
+
+.navbar-toggler.toggler-example {
+    cursor: pointer;
+}
+
+.dark-blue-text {
+    color: #0A38F5;
+}
+
+.dark-pink-text {
+    color: #AC003A;
+}
+
+.dark-amber-text {
+    color: #ff6f00;
+}
+
+.dark-teal-text {
+    color: #004d40;
+}
+
+.navbar.navbar-1 .navbar-toggler-icon {
+    background-image: url('https://mdbootstrap.com/img/svg/hamburger6.svg?color=000');
+}
+
+@media only screen and (max-width: 600px) {
+    h1 {
+        font-size: 30px;
+        padding: 8px;
+    }
+}

@@ -1,0 +1,1 @@
+        <p style="text-align: center;color: gray">&copy; 2019 plasitc-pollution.com  <br><span> <a style="color:gray;" href="#"><u> Privacy &#38 Policy</u></a></span><p>
