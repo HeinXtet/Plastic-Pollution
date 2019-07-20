@@ -47,12 +47,12 @@ if ($_SESSION['attampts'] >= 1) {?>
   <?php }?>
   <?php }
 ?>
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<a href="#" style="text-decoration:none;position: fixed;top:50%;right: 2px;margin: 0 auto;background: red;padding:10px;color:white;width: 130px;text-align: center;z-index: 1">Donate</a>
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="z-index:-29">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-
     </ol>
     <div style="max-height: 500px" class="carousel-inner">
       <div class="carousel-item active">
