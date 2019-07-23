@@ -1,6 +1,12 @@
 <?php
+$donate = new Donate();
+if(isset($_SESSION['email'])){
+    $donate->donate();
 
-
+}else{
+    $_SESSION['un_authorized'] = true;
+    header("location:../page/index.php");
+}
 class Donate
 {
     public $isDonated = false;
