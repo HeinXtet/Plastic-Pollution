@@ -47,10 +47,8 @@ session_start();
           </button>
         </div>
         <div class="modal-body">
-            
               <div class="tab-content" id="myTabContent">
                   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
                       <form method="POST" action="../../../plastic/db/registration.php">
                         <div class="form-group">
                           <label for="firstName">First Name</label>
@@ -133,13 +131,14 @@ session_start();
       </ul>
         <?php
         if (isset($_SESSION['email'])) {?>
+          
+          <div >
+              <p  style="padding: 8px;margin-top: 8px;color: gray"><?php echo $_SESSION['email'] ?></p>
+          </div>
           <form method="POST" action="../../../plastic/db/registration.php"> 
             <input type="hidden" name="clear" class="form-control">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">SignOut</button>
           </form>
-          <div >
-              <p  style="padding: 8px;margin-top: 8px">Welcome <?php echo $_SESSION['email'] ?></p>
-          </div>
         <?php } else {?>
         <button type="button" class="btn btn-outline-success my-2 my-sm-0"
          data-toggle="modal" 

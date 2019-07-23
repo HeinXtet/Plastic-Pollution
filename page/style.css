@@ -169,11 +169,8 @@ h1, p, h2, h3, h4, h5, h6 {
 }
 
 #nav-item-ul {
+    text-decoration: none;
     color: grey;
-}
-
-.icon-bar {
-    background-color: #FF0000 !important;
 }
 
 .navbar-toggler.toggler-example {
@@ -184,33 +181,19 @@ h1, p, h2, h3, h4, h5, h6 {
     font-size: 1.5rem;
 }
 
-.navbar-toggler.toggler-example {
-    cursor: pointer;
-}
-
-.dark-blue-text {
-    color: #0A38F5;
-}
-
-.dark-pink-text {
-    color: #AC003A;
-}
-
-.dark-amber-text {
-    color: #ff6f00;
-}
-
-.dark-teal-text {
-    color: #004d40;
-}
-
 .navbar.navbar-1 .navbar-toggler-icon {
     background-image: url('https://mdbootstrap.com/img/svg/hamburger6.svg?color=000');
 }
 
 @media only screen and (max-width: 600px) {
     h1 {
-        font-size: 30px;
+        font-size: 30px;    
+        padding: 8px;
+    }
+
+    #carouselExampleIndicators h3 {
+        font-size: 20px;
         padding: 8px;
     }
 }
+

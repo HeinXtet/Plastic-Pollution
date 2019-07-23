@@ -23,7 +23,7 @@
     crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-  <link href="./../../plastic/css/style.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" text="text/css" href="style.css" />
   <title>About</title>
 </head>
 <body>

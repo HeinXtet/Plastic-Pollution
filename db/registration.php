@@ -21,9 +21,10 @@ if (!isset($_POST['login'])){
         session_destroy();
         header('location:../page/index.php');
     } else {
+        $generateId = 'PP'.sha1($email);
         $encryptedPassword = sha1($password);
         if ($process->userTransaction($email, $conn) == false) {
-            $insertQuery = "INSERT INTO user (first_name,last_name,email,password) VALUES  ('$firstName','$lastName','$email','$encryptedPassword');";
+            $insertQuery = "INSERT INTO user (first_name,last_name,email,password,user_id) VALUES  ('$firstName','$lastName','$email','$encryptedPassword','$generateId');";
             if ($conn->query($insertQuery) === true) {
                $process->userTransaction($email,$conn);
             } else {
@@ -32,7 +33,6 @@ if (!isset($_POST['login'])){
         }
     }
 }else{
-    
     $email = $_POST['email'];
     $password = $_POST['password'];
     if($_SESSION['attampts'] < 3){
@@ -74,5 +74,4 @@ class Querying
             return false;
         }
     }
-
 }
