@@ -21,10 +21,15 @@ if (!isset($_POST['login'])){
         session_destroy();
         header('location:../page/index.php');
     } else {
-        $generateId = 'PP'.sha1($email);
         $encryptedPassword = sha1($password);
+        var_dump("passwrod $encryptedPassword");
+        // die();
+        // 40bd001563085fc35165329ea1ff5c5ecbdbbeef
+        $generateId = 'PP'.sha1($email);
         if ($process->userTransaction($email, $conn) == false) {
-            $insertQuery = "INSERT INTO user (first_name,last_name,email,password,user_id) VALUES  ('$firstName','$lastName','$email','$encryptedPassword','$generateId');";
+            $insertQuery = "INSERT INTO user 
+            (first_name,last_name,email,password,user_id)
+             VALUES  ('$firstName','$lastName','$email','$encryptedPassword','$generateId');";
             if ($conn->query($insertQuery) === true) {
                $process->userTransaction($email,$conn);
             } else {
@@ -34,7 +39,9 @@ if (!isset($_POST['login'])){
     }
 }else{
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = $_POST['password']; 
+    var_dump("email $email pass $password");
+    var_dump(sha1($password));
     if($_SESSION['attampts'] < 3){
         $encryptedPassword = sha1($password);
         $selectQuery = "SELECT * FROM user WHERE email = '$email' and password = '$encryptedPassword' ";
@@ -66,12 +73,27 @@ class Querying
         if ($result->num_rows == 1) {
             while ($row = $result->fetch_assoc()) {
                 $_SESSION['email'] = $row["email"];
+                $_SESSION['user_id'] = $row['user_id'];
                 header('location:../page/index.php');
                 echo "id: " . $row["id"] . " - Name: " . $row["first_name"] . " " . $row["last_name"] . "<br>";
             }
             return true;
         } else {
             return false;
+        }
+    }
+
+    public function getUser($id, $conn)
+    {
+        $sql = "SELECT * FROM user WHERE user_id = '$id' ";
+        $result = $conn->query($sql);
+        if ($result->num_rows == 1) {
+            while ($row = $result->fetch_assoc()) {
+                return $row;
+            }
+            return null;
+        } else {
+            return null;
         }
     }
 }

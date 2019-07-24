@@ -28,10 +28,14 @@ class Donate
                 if ($conn->query($insertQuery) === true) {
                     $_SESSION['donate_success'] = true;
                     $isDonated = true;
-                    header("location:../page/index.php");
+                    return true;
+                    // header("location:../page/index.php");
                 } else {
                     echo "Error: " . "<br>" . $conn->error;
+                    return false;
                 }
+            }else {
+                return true;
             }
         }
     }
@@ -47,5 +51,6 @@ class Querying
         } else {
             return false;
         }
+        $conn->close();
     }
 }
