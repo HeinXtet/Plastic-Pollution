@@ -1,9 +1,9 @@
         
         
-        <div style="background-color: black;height: 100vh">
-        <h3 style="text-align: center;color:white;padding:5%;">Follow on Social</h3>
+        <div class="row" style="background-color: black;height: 100vh">
+        <h3 style="text-align: center;color:black;padding:5%;">Follow on Social</h3>
         <div style="position:absolute;width: 100%;">
-          <nav class="navbar navbar-default" style="text-align: center;margin:0 auto;max-width: 300px">
+          <nav class="navbar navbar-dark" style="text-align: center;margin:0 auto;max-width: 300px">
             <a class="hover-link" href="#">
               <svg class="svg-icon" id="facebook" viewBox="0 0 20 20">
                 <path fill="none"
