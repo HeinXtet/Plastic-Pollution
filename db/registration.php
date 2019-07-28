@@ -23,23 +23,27 @@ if (!isset($_POST['login'])) {
     } else {
         $encryptedPassword = sha1($password);
         $generateId = 'PP' . sha1($email);
-        if ($process->userTransaction($email, $conn) == false) {
-            $insertQuery = "INSERT INTO user
-            (first_name,last_name,email,password,user_id)
-             VALUES  ('$firstName','$lastName','$email','$encryptedPassword','$generateId');";
-            if ($conn->query($insertQuery) === true) {
-                $process->userTransaction($email, $conn);
-            } else {
-                echo "Error: " . "<br>" . $conn->error;
+        $id = $process->getPrefixId($conn);
+        if ($id != null) {
+            if ($process->userTransaction($email, $conn) == false) {
+                $insertQuery = "INSERT INTO user
+                (first_name,last_name,email,password,user_id)
+                 VALUES  ('$firstName','$lastName','$email','$encryptedPassword','$id');";
+                if ($conn->query($insertQuery) === true) {
+                    $process->userTransaction($email, $conn);
+                } else {
+                    echo "Error: " . "<br>" . $conn->error;
+                }
             }
         }
+
     }
 } else {
     $email = $_POST['email'];
     $password = $_POST['password'];
     var_dump("email $email pass $password");
     var_dump(sha1($password));
-   
+
     if ($_SESSION['login_error_count'] < 3) {
         $encryptedPassword = sha1($password);
         $selectQuery = "SELECT * FROM user WHERE email = '$email' and password = '$encryptedPassword' ";
@@ -63,6 +67,33 @@ if (!isset($_POST['login'])) {
 $conn->close();
 class Querying
 {
+
+    public function getPrefixId($conn)
+    {
+        $prefix = "PP";
+        try {
+            $sql = "SELECT * FROM maxIndex where id= '1' ";
+            $result = $conn->query($sql);
+            $data = $result->fetch_assoc();
+
+            $maxId = $data['maxId'] + 1;
+            var_dump($maxId);
+            $id = $prefix . sprintf("%06s", $maxId);
+            $saveMax = "UPDATE maxIndex SET
+            maxId = '$maxId'
+            WHERE id='1' ";
+            if ($conn->query($saveMax) === true) {
+                return $id;
+            } else {
+                echo "Error: " . "<br>" . $conn->error;
+                return null;
+            }
+        } catch (\Throwable $th) {
+            var_dump($th);
+        }
+
+    }
+
     public function userTransaction($email, $conn)
     {
         $sql = "SELECT * FROM user WHERE email = '$email' ";
