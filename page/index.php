@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <?php
 include_once "../page/commom/navbar.php";
-if (!isset($_SESSION['attampts'])) {
-    $_SESSION['attampts'] = 0;
+if (!isset($_SESSION['login_error_count'])) {
+    $_SESSION['login_error_count'] = 0;
 }
 ?>
 
@@ -26,28 +26,28 @@ if (!isset($_SESSION['attampts'])) {
 
 <body>
 
-<?php
+  <?php
 
 if (isset($_SESSION['user_wrong_password'])) {?>
 
-      <script>
-      Swal.fire({
-          type: 'error',
-          title: 'Warning',
-          text: '<?php echo $_SESSION['user_wrong_password'] ?>',
-        })
-      </script>
+  <script>
+    Swal.fire({
+      type: 'error',
+      title: 'Warning',
+      text: '<?php echo $_SESSION['user_wrong_password'] ?>',
+    })
+  </script>
   <?php }
 
 if (isset($_SESSION['chnage_password_success'])) {?>
   <script>
-  Swal.fire({
+    Swal.fire({
       type: 'success',
       title: 'Successful',
       text: '<?php echo $_SESSION['chnage_password_success'] ?>',
     })
   </script>
-<?php }
+  <?php }
 
 ?>
 
@@ -55,26 +55,26 @@ if (isset($_SESSION['chnage_password_success'])) {?>
 
 
 
-<?php
+  <?php
 if (isset($_SESSION['user_update_success'])) {?>
-      <script>
-      Swal.fire({
-          type: 'success',
-          title: 'Profile Update',
-          text: 'Your profile is update successfully',
-        })
-      </script>
+  <script>
+    Swal.fire({
+      type: 'success',
+      title: 'Profile Update',
+      text: 'Your profile is update successfully',
+    })
+  </script>
   <?php }
 ?>
 
-<?php
+  <?php
 if (isset($_SESSION['attampts'])) {
     if ($_SESSION['attampts'] > 3) {
       echo '<script> Swal.fire({
-        type: "error",
-        title: "Warning",
-        text: "Your login fail please wait 3 mins",
-      })</script>';
+          type: "error",
+          title: "Warning",
+          text: "Your login fail please wait 3 mins",
+        })</script>';
     }
 }
 ?>
@@ -107,19 +107,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </button>
         </div>
         <div class="modal-body">
-          <form method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input required type="email" name="email" class="form-control" id="exampleInputEmail1"
-              aria-describedby="emailHelp" placeholder="Enter email">
+          <form method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> <div class="row">
+            <div class="form-group col-md-6">
+              <label for="name">Email Name</label>
+              <input required type="text" name="name" class="form-control" id="name" placeholder="Enter Name">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="exampleInputEmail1">Email address</label>
+              <input required type="email" name="email" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+            <div class="form-group col-md-12">
+              <label for="message" style="float: left">Message(required)</label>
+              <textarea required type="message" name="message" class="form-control" id="message"
+                placeholder="Message"></textarea>
+            </div>
         </div>
         <button style="margin-left:20px;margin-bottom:20px;" type="submit" class="btn btn-primary">Donate Now</button>
-      </form>
+        </form>
       </div>
     </div>
   </div>
   </div>
+  <a href="#" data-toggle="modal" data-target="#openDonateForm" style="text-decoration:none;position: fixed;
+    top:50%;right: 2px;margin: 0 auto;background: red;
+    padding:10px;color:white;width: 130px;text-align: center;z-index: 1000">Donate</a>
 
-  <?php
+  <!-- <?php
 if (isset($_SESSION['email'])) {?>
   <a href="#" data-toggle="modal" data-target="#openDonateForm" style="text-decoration:none;position: fixed;
     top:50%;right: 2px;margin: 0 auto;background: red;
@@ -129,7 +143,7 @@ if (isset($_SESSION['email'])) {?>
     top:50%;right: 2px;margin: 0 auto;background: red;
     padding:10px;color:white;width: 130px;text-align: center;z-index: 1000">Donate</a>
   <?php }
-?>
+?> -->
   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -162,15 +176,15 @@ if (isset($_SESSION['email'])) {?>
       </div>
 
       <div class="item">
-          <div style="position: absolute;height: 100%;width: 100%;background-color: rgba(0, 0, 0, 0.2)">
-              <h4 style="color: white;font-size: 40px;margin-left: 20px;font-weight: 300 ;margin-top: 10%;">
-                IT’S <span style="color: aqua">NOT</span> JUST ABOUT <span style="color: aqua">US</span><br>
-              </h4>
-              <p style="padding-left: 20px; font-size: 20px;color: white">
-                Humans created the problem, but it impacts all living creatures and the entire planet.
-              </p>
-            </div>
-            <img style="background-color: blue" src="../image/pig.jpeg" class="d-block w-100" alt="...">
+        <div style="position: absolute;height: 100%;width: 100%;background-color: rgba(0, 0, 0, 0.2)">
+          <h4 style="color: white;font-size: 40px;margin-left: 20px;font-weight: 300 ;margin-top: 10%;">
+            IT’S <span style="color: aqua">NOT</span> JUST ABOUT <span style="color: aqua">US</span><br>
+          </h4>
+          <p style="padding-left: 20px; font-size: 20px;color: white">
+            Humans created the problem, but it impacts all living creatures and the entire planet.
+          </p>
+        </div>
+        <img style="background-color: blue" src="../image/pig.jpeg" class="d-block w-100" alt="...">
 
       </div>
       ...
@@ -265,7 +279,7 @@ if (isset($_SESSION['email'])) {?>
         </div>
       </div>
       <div class="row">
-          <?php include_once '../page/commom/footer.php'?>
+        <?php include_once '../page/commom/footer.php'?>
 
       </div>
 
@@ -288,10 +302,10 @@ if (isset($_SESSION['email'])) {?>
           if (minutes < 0) {
 
             // <?php echo "alert('message ');";
-$_SESSION[
-    'test'
-] = 'teste32';
-($_SESSION['attampts'] = 0);
+            $_SESSION[
+              'test'
+            ] = 'teste32';
+            ($_SESSION['attampts'] = 0);
 ?>
           clearInterval(interval);
         localStorage.removeItem('timer');

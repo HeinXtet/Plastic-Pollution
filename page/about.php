@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <body>
 
-  <div class="modal fade" id="openDonateForm" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="openDonateForm" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content" style="background: white">
@@ -52,19 +52,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </button>
         </div>
         <div class="modal-body">
-          <form  method="POST"<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Enter email">
+          <form method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> <div class="row">
+            <div class="form-group col-md-6">
+              <label for="name">Email Name</label>
+              <input required type="text" name="name" class="form-control" id="name" placeholder="Enter Name">
             </div>
-            <button style="margin-left:20px;margin-bottom:20px;" type="submit" class="btn btn-primary">Donate Now</button>
-          </form>
+            <div class="form-group col-md-6">
+              <label for="exampleInputEmail1">Email address</label>
+              <input required type="email" name="email" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+            <div class="form-group col-md-12">
+              <label for="message" style="float: left">Message(required)</label>
+              <textarea required type="message" name="message" class="form-control" id="message"
+                placeholder="Message"></textarea>
+            </div>
         </div>
+        <button style="margin-left:20px;margin-bottom:20px;" type="submit" class="btn btn-primary">Donate Now</button>
+        </form>
       </div>
     </div>
   </div>
-
+  </div>
 
   <?php if (isset($_SESSION['un_authorized'])) {?>
   <div id="alert-info" class="alert alert-error" role="alert">
@@ -118,13 +127,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           ?>
       </div>
       <div style="margin-top:40px"></div>
-      <?php if (isset($_SESSION['email'])) {?>
+      <a data-toggle="modal" data-target="#openDonateForm" class="donate-btn">
+          <span style="color:white">Donate</span></a>
+      <!-- <?php if (isset($_SESSION['email'])) {?>
         <a data-toggle="modal" data-target="#openDonateForm" class="donate-btn">
           <span style="color:white">Donate</span></a>
      <?php } else {?>
       <a onclick='donateClick()' class="donate-btn"> Donate
         </a>
-     <?php }?>
+     <?php }?> -->
      
     </div>
   </div>

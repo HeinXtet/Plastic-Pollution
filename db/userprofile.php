@@ -3,7 +3,16 @@ session_start();
 include_once "../db/config.php";
 
 $transaction = new Transaction();
-if (isset($_POST['update'])) {
+if(isset($_POST['delete'])){
+    $id = $_SESSION['user_id'];
+    $deleteQuery = "DELETE FROM user where user_id = '$id' ";
+    if (mysqli_query($conn, $deleteQuery)) {
+        session_destroy();
+        header("location:../page/index.php");
+    }else {
+        var_dump($conn->connect_error());
+    }
+}else if (isset($_POST['update'])) {
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
     $address = $_POST['address'];

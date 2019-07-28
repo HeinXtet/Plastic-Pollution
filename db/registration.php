@@ -39,10 +39,8 @@ if (!isset($_POST['login'])) {
     $password = $_POST['password'];
     var_dump("email $email pass $password");
     var_dump(sha1($password));
-    if (!isset($_SESSION['attampts'])) {
-        $_SESSION['attampts'] = 0;
-    }
-    if ($_SESSION['attampts'] < 3) {
+   
+    if ($_SESSION['login_error_count'] < 3) {
         $encryptedPassword = sha1($password);
         $selectQuery = "SELECT * FROM user WHERE email = '$email' and password = '$encryptedPassword' ";
         $result = $conn->query($selectQuery);
@@ -52,10 +50,9 @@ if (!isset($_POST['login'])) {
                 $process->userTransaction($email, $conn);
             }
         } else {
-            $attamptCount = $_SESSION['attampts'];
+            $attamptCount = $_SESSION['login_error_count'];
             $attamptCount = $attamptCount + 1;
-            $_SESSION['attampts'] = $attamptCount;
-            $_SESSION['error'] = "UnAuthorized User, Please try again. Login Error Count " . $_SESSION['attampts'];
+            $_SESSION['login_error_count'] = $attamptCount;
             header("location:../page/index.php");
         }
     } else {

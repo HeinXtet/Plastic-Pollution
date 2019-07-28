@@ -2,10 +2,6 @@
 $donate = new Donate();
 if(isset($_SESSION['email'])){
     $donate->donate();
-
-}else{
-    $_SESSION['un_authorized'] = true;
-    header("location:../page/index.php");
 }
 class Donate
 {
@@ -23,8 +19,11 @@ class Donate
         $process = new Querying();
         if (isset($_POST['email'])) {
             $email = $_POST['email'];
+            $name = $_POST['name'];
+            $message = $_POST['message'];
+            
             if ($process->userTransaction($email, $conn) == false) {
-                $insertQuery = "INSERT INTO donate (email) VALUES  ('$email');";
+                $insertQuery = "INSERT INTO donate (email,name,message) VALUES  ('$email','$name','$message');";
                 if ($conn->query($insertQuery) === true) {
                     $_SESSION['donate_success'] = true;
                     $isDonated = true;

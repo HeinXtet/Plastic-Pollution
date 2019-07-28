@@ -36,8 +36,12 @@ $user = mysqli_fetch_array($sel_query, MYSQLI_ASSOC);
       </div>
     <input type="hidden" value="update" name="update"/>
     <button type="submit" class="btn btn-primary">Update</button>
-  </form>
 
+  </form>
+  <form style="margin-top:10px;display:block" method="POST" action="../../../plastic/db/userprofile.php">
+    <input type="hidden" value="delete" name="delete"/>
+    <button style="background:red;color:white" type="submit" name="delete_account" value="delete" class="btn ">Delete Account</button>
+    </form>
 </div>
 <div id="change_password" class="tabcontent">
   <form method="POST" action="../../../plastic/db/userprofile.php">
