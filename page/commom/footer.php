@@ -1,5 +1,5 @@
-        
-        
+
+
         <div class="row" style="background-color: black;height: 100vh">
         <h3 style="text-align: center;color:black;padding:5%;">Follow on Social</h3>
         <div style="position:absolute;width: 100%;">
@@ -36,6 +36,11 @@
           <div style="text-align: center;display: block;margin: 3%;">
             <img src="../image/plastic3.png" />
           </div>
-        <p style="text-align: center;color: gray">&copy; 2019 plasitc-pollution.com  <br><span> <a style="color:gray;" href="#"><u> Privacy &#38 Policy</u></a></span><p>
-        </div>
+        <p style="text-align: center;color: gray">&copy; 2019 plasitc-pollution.com  <br><span>
+           <a target="#" style="color:gray;" href="https://www.whois.com/whois/privacy-link.com"><u> Privacy &#38 Policy</u></a></span>
+           <p>
+           <p  style="text-align: center;color: gray"><span>
+           <a style="color:gray;" target="#"  href="http://www.copyright.com/"><u> Copyright</u></a></span>
+           <p>
+          </div>
       </div>

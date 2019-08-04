@@ -39,6 +39,25 @@ if (!isset($_POST['login'])) {
 
     }
 } else {
+    if(isset($_SESSION['num_login_fail']))
+    {
+        if($_SESSION['num_login_fail']==3)
+        {
+
+            if(time()-$_SESSION['last_login_time']<3*60*60)
+            {
+                echo "<script>alert('You are blocked from 3 minutes');</script>";
+               // return;
+                echo '<script language="javascript">location.replace("../page/index.php");</script>';
+                //header("location:../page/index.php");
+               // exit;
+               return;
+            }
+        }
+    }
+    else{
+        $_SESSION['num_login_fail']=0;
+    }
     $email = $_POST['email'];
     $password = $_POST['password'];
     var_dump("email $email pass $password");
@@ -49,11 +68,14 @@ if (!isset($_POST['login'])) {
         $selectQuery = "SELECT * FROM user WHERE email = '$email' and password = '$encryptedPassword' ";
         $result = $conn->query($selectQuery);
         if ($result->num_rows > 0) {
+            $_SESSION['num_login_fail']=0;
             while ($row = $result->fetch_assoc()) {
                 echo "id: " . $row["id"] . " - Name: " . $row["first_name"] . " " . $row["last_name"] . "<br>";
                 $process->userTransaction($email, $conn);
             }
         } else {
+            $_SESSION['num_login_fail']=$_SESSION['num_login_fail']+1;
+            $_SESSION['last_login_time']=time();
             $attamptCount = $_SESSION['login_error_count'];
             $attamptCount = $attamptCount + 1;
             $_SESSION['login_error_count'] = $attamptCount;

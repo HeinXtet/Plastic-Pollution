@@ -19,11 +19,13 @@ class Donate
         $process = new Querying();
         if (isset($_POST['email'])) {
             $email = $_POST['email'];
-            $name = $_POST['name'];
+            $name = $_POST['first_name'];
+            $last_name = $_POST['last_name'];
+
             $message = $_POST['message'];
             
             if ($process->userTransaction($email, $conn) == false) {
-                $insertQuery = "INSERT INTO donate (email,name,message) VALUES  ('$email','$name','$message');";
+                $insertQuery = "INSERT INTO donate (email,first_name,last_name,message) VALUES  ('$email','$name','$last_name','$message');";
                 if ($conn->query($insertQuery) === true) {
                     $_SESSION['donate_success'] = true;
                     $isDonated = true;

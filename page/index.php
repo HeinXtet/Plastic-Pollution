@@ -108,11 +108,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="modal-body">
           <form method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> <div class="row">
-            <div class="form-group col-md-6">
-              <label for="name">Email Name</label>
-              <input required type="text" name="name" class="form-control" id="name" placeholder="Enter Name">
+          <div class="form-group col-md-6">
+              <label for="name">Enter First Name</label>
+              <input required type="text" name="first_name" class="form-control" id="name" placeholder="Enter First Name">
             </div>
             <div class="form-group col-md-6">
+              <label >Enter Last Name</label>
+              <input required type="text" name="last_name" class="form-control"
+                 placeholder="Enter Last Name">
+            </div>
+            <div class="form-group col-md-12">
               <label for="exampleInputEmail1">Email address</label>
               <input required type="email" name="email" class="form-control" id="exampleInputEmail1"
                 aria-describedby="emailHelp" placeholder="Enter email">

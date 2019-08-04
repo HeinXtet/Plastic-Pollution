@@ -155,7 +155,7 @@ $firstCharacter = substr($_SESSION['email'], 0, 1);
                     placeholder="Confirm Password">
                 </div>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Sign Up</button>
+                <button type="submit" class="btn btn-primary" onclick=" confirm('Are you sure want to Sign Up Now?') ">Sign Up</button>
               </form>
           </div>
 

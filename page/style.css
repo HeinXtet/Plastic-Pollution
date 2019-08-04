@@ -29,9 +29,6 @@ h1, p, h2, h3, h4, h5, h6 {
     padding: 20px;
 }
 
-.test {
-    color: green;
-}
 
 .content-frame {
     margin-top: 40px;
@@ -197,12 +194,6 @@ h1, p, h2, h3, h4, h5, h6 {
     }
 }
 
-@media only screen and (max-width: 600px) {
-    body {
-        color: green;
-    }
-}
-
 .donate-btn {
     margin-bottom: 20px;
     background-color: #44c767;
@@ -275,4 +266,9 @@ h1, p, h2, h3, h4, h5, h6 {
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
+  }
+
+  .campaign_list{
+      margin : 20px;
+      padding: 8px;
   }
